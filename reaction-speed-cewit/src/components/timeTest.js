@@ -4,49 +4,72 @@ const styles = {
     buttonActive: {
         backgroundColor: "green"
     },
-    buttonInactive: {
+    buttonInActive: {
         backgroundColor: "red"
     }
 };
 
-const changeColorAtRandom = (setActive, setLastLoggedTime) => {
+const changeColorAtRandom = (setIsActive, setLastLoggedTime) => {
     return setTimeout(() => {
-        setActive(true);
+        setIsActive(true);
         setLastLoggedTime(Date.now());
     }, Math.floor(Math.random() * (2000 - 800)) + 800);
 };
 
 const handleClick = (
     setLastTime,
-    setActive,
+    setIsActive,
     lastLoggedTime,
     setLastLoggedTime,
     counter,
     setCounter
 ) => {
     setLastTime(Date.now() - lastLoggedTime);
-    setActive(false);
+    setIsActive(false);
     setLastLoggedTime(0);
     setCounter(counter - 1);
 };
 
-const startTest = setCounter => {
+const startTest = (setCounter, setIsTesting, hasTested, resetTest) => {
+    if (hasTested) {
+        resetTest();
+    }
+    setIsTesting(true);
     setCounter(3);
 };
 
 export default function TimeTest(props) {
-    const [active, setActive] = React.useState(false);
+    const [isActive, setIsActive] = React.useState(false);
     const [lastLoggedTime, setLastLoggedTime] = React.useState(null);
     const [counter, setCounter] = React.useState(0);
+    const [isTesting, setIsTesting] = React.useState(false);
 
     React.useEffect(() => {
-        if (counter > 0 && active === false)
-            changeColorAtRandom(setActive, setLastLoggedTime);
-    }, [counter, active]);
+        if (counter > 0 && isActive === false)
+            changeColorAtRandom(setIsActive, setLastLoggedTime);
+        else setIsTesting(false);
+    }, [counter, isActive]);
+
+    const resetTest = () => {
+        props.resetTest();
+        setLastLoggedTime(null);
+    };
 
     return (
         <div>
-            <button onClick={() => startTest(setCounter)}>start test</button>
+            <button
+                onClick={() =>
+                    startTest(
+                        setCounter,
+                        setIsTesting,
+                        props.hasTested,
+                        resetTest
+                    )
+                }
+                disabled={isTesting}
+            >
+                start test
+            </button>
             <br />
             <br />
             <br />
@@ -54,14 +77,15 @@ export default function TimeTest(props) {
                 onClick={() =>
                     handleClick(
                         props.setLastTime,
-                        setActive,
+                        setIsActive,
                         lastLoggedTime,
                         setLastLoggedTime,
                         counter,
                         setCounter
                     )
                 }
-                style={active ? styles.buttonActive : styles.buttonInactive}
+                style={isActive ? styles.buttonActive : styles.buttonInActive}
+                disabled={!isActive}
             >
                 react to me!
             </button>
