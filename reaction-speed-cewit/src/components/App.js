@@ -1,46 +1,45 @@
 import React from "react";
-import TimeTest from "./timeTest";
+import { sendTestResults } from "../api/tests";
+import { URL, PAYFONE_AUTH_URL } from "../constants/api";
+import { PHONE_NUMBER_REGEX } from "../constants/regex";
+import { authUser } from "../api/auth";
+import TestScreen from "./testSceen";
 
 //const styles = {};
 
+const findUser = (phoneNumber, setUser) => {
+    if (PHONE_NUMBER_REGEX.test(phoneNumber)) {
+        console.log("good regex");
+        authUser(URL, { phoneNumber }).then(data => {
+            setUser(data); // JSON data parsed by `response.json()` call
+        });
+    } else {
+        console.log("bad regex");
+    }
+};
+
 export default function App(props) {
-    const [lastTime, setLastTime] = React.useState(0);
-    const [times, setTimes] = React.useState([]);
-    const [average, setAverage] = React.useState(null);
-
-    const resetTest = () => {
-        setAverage(null);
-        setTimes([]);
-        setLastTime(0);
-    };
-
-    React.useEffect(() => {
-        if (lastTime !== 0) {
-            times.push(lastTime);
-            console.log(times.length);
-            if (times.length === 3) {
-                setAverage(
-                    times.reduce((acc, element) => acc + element) / times.length
-                );
-            }
-        }
-    }, [lastTime, times]);
+    const [phoneNumber, setPhoneNumber] = React.useState("");
+    const [user, setUser] = React.useState(null);
 
     return (
         <div>
-            <p>Hello reaction time!</p>
-            <TimeTest
-                setLastTime={setLastTime}
-                hasTested={average ? true : false}
-                resetTest={resetTest}
-            />
-            <p>
-                {average
-                    ? `your average time is ${average}ms`
-                    : lastTime > 0
-                    ? `previous time is ${lastTime}ms`
-                    : null}
-            </p>
+            {!user ? (
+                <div>
+                    <input
+                        type="text"
+                        value={phoneNumber}
+                        onChange={e => setPhoneNumber(e.target.value)}
+                        id="phone-number"
+                        name="phone-number"
+                    />
+                    <button onClick={() => findUser(phoneNumber, setUser)}>
+                        Submit
+                    </button>
+                </div>
+            ) : (
+                <TestScreen user={user} />
+            )}
         </div>
     );
 }
