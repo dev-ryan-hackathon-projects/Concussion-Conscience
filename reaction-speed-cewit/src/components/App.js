@@ -21,6 +21,7 @@ const findUser = (phoneNumber, setUser) => {
 export default function App(props) {
     const [phoneNumber, setPhoneNumber] = React.useState("");
     const [user, setUser] = React.useState(null);
+<<<<<<< Updated upstream
 
     return (
         <div>
@@ -40,6 +41,22 @@ export default function App(props) {
             ) : (
                 <TestScreen user={user} />
             )}
+=======
+
+    React.useEffect(() => {
+        async function fetchUser() {
+            const data = await authUser(URL + POST_AUTH_USER_ROUTE, {
+                targetUrl: TARGET_URL
+            });
+            setUser(data);
+        }
+        fetchUser();
+    }, []);
+
+    return (
+        <div>
+            {!user ? <div>waiting for data</div> : <TestScreen user={user} />}
+>>>>>>> Stashed changes
         </div>
     );
 }
