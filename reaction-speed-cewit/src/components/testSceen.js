@@ -28,7 +28,7 @@ export default function TestScreen(props) {
 
     return (
         <div>
-            <p>Hello {props.user.alias}! welcome to reaction time!</p>
+            <p>Hello {props.user}! welcome to reaction time!</p>
             <TimeTest
                 setLastTime={setLastTime}
                 hasTested={average ? true : false}

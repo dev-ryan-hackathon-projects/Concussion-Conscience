@@ -13,4 +13,3 @@ export async function authUser(url = "", data = {}) {
     }
 
     return { ...response.data, alias: "name here pls" }; // parses JSON response into native JavaScript objects
-}
