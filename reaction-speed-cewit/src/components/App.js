@@ -17,20 +17,19 @@ export default function App(props) {
     const [phoneNumber, setPhoneNumber] = React.useState("");
     const [user, setUser] = React.useState("");
 
+    React.useEffect(() => {
+        async function fetchUser() {
+            const data = await authUser(URL + POST_AUTH_USER_ROUTE, {
+                targetUrl: TARGET_URL
+            });
+            setUser(data);
+        }
+        fetchUser();
+    }, []);
+
     return (
         <div>
-            <button
-                onClick={() =>
-                    setUser(() =>
-                        authUser(`${URL}:${PORT}${POST_AUTH_USER_ROUTE}`, {
-                            targetUrl: TARGET_URL
-                        }).then(data => data)
-                    )
-                }
-            >
-                get user
-            </button>
-            {/* {!user ? <div>waiting for data</div> : <TestScreen user={user} />} */}
+            {!user ? <div>waiting for data</div> : <TestScreen user={user} />}
         </div>
     );
 }
