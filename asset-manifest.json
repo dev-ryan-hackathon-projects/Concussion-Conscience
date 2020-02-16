@@ -1,19 +1,19 @@
 {
   "files": {
-    "main.js": "/reaction-speed-cewit/static/js/main.18ad1904.chunk.js",
-    "main.js.map": "/reaction-speed-cewit/static/js/main.18ad1904.chunk.js.map",
+    "main.js": "/reaction-speed-cewit/static/js/main.2418bb42.chunk.js",
+    "main.js.map": "/reaction-speed-cewit/static/js/main.2418bb42.chunk.js.map",
     "runtime-main.js": "/reaction-speed-cewit/static/js/runtime-main.527f674e.js",
     "runtime-main.js.map": "/reaction-speed-cewit/static/js/runtime-main.527f674e.js.map",
     "static/js/2.b81d9d60.chunk.js": "/reaction-speed-cewit/static/js/2.b81d9d60.chunk.js",
     "static/js/2.b81d9d60.chunk.js.map": "/reaction-speed-cewit/static/js/2.b81d9d60.chunk.js.map",
     "index.html": "/reaction-speed-cewit/index.html",
-    "precache-manifest.badbc30a394534729fc83b30991b81ab.js": "/reaction-speed-cewit/precache-manifest.badbc30a394534729fc83b30991b81ab.js",
+    "precache-manifest.261c6f2bea009dedf0adc01682df50fd.js": "/reaction-speed-cewit/precache-manifest.261c6f2bea009dedf0adc01682df50fd.js",
     "service-worker.js": "/reaction-speed-cewit/service-worker.js",
     "static/js/2.b81d9d60.chunk.js.LICENSE.txt": "/reaction-speed-cewit/static/js/2.b81d9d60.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.527f674e.js",
     "static/js/2.b81d9d60.chunk.js",
-    "static/js/main.18ad1904.chunk.js"
+    "static/js/main.2418bb42.chunk.js"
   ]
 }
