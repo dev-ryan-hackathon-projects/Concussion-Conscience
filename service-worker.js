@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/reaction-speed-cewit/precache-manifest.869853d0450e2176ae692b59ae660196.js"
+  "/reaction-speed-cewit/precache-manifest.3c61be68d828f5a3fa326f05475fb678.js"
 );
 
 self.addEventListener('message', (event) => {
