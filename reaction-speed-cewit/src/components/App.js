@@ -7,16 +7,14 @@ import {
     POST_AUTH_USER_ROUTE,
     TARGET_URL
 } from "../constants/api";
-import { PHONE_NUMBER_REGEX } from "../constants/regex";
 import { authUser } from "../api/auth";
-import TestScreen from "./testSceen";
+import TestScreen from "./TestScreen";
 
 //const styles = {};
 
 export default function App(props) {
-    const [phoneNumber, setPhoneNumber] = React.useState("");
     const [user, setUser] = React.useState("");
-
+    console.log(window.location.search);
     React.useEffect(() => {
         async function fetchUser() {
             const data = await authUser(URL + POST_AUTH_USER_ROUTE, {
@@ -27,9 +25,23 @@ export default function App(props) {
         fetchUser();
     }, []);
 
+    React.useEffect(() => {
+        if (
+            !window.location.search &&
+            user &&
+            user.Status == 0 &&
+            user.Response.RedirectTargetUrl
+        ) {
+            //if there is not a parameter in qs, user status is 0 and there is a redirect
+
+            window.location.href = user.Response.RedirectTargetUrl;
+        }
+    }, [user]);
+
     return (
         <div>
-            {!user ? <div>waiting for data</div> : <TestScreen user={user} />}
+            {!user || user.status !== 0 ? <div>waiting for data</div> : null}
+            {/*<TestScreen user={user} />*/}
         </div>
     );
 }

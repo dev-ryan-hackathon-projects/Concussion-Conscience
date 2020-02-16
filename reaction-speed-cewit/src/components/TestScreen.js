@@ -1,5 +1,5 @@
 import React from "react";
-import TimeTest from "./timeTest";
+import TimeTest from "./TimeTest";
 
 //const styles = {};
 
