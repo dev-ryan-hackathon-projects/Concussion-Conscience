@@ -1,19 +1,19 @@
 {
   "files": {
-    "main.js": "/reaction-speed-cewit/static/js/main.46a9f7f5.chunk.js",
-    "main.js.map": "/reaction-speed-cewit/static/js/main.46a9f7f5.chunk.js.map",
+    "main.js": "/reaction-speed-cewit/static/js/main.a788089e.chunk.js",
+    "main.js.map": "/reaction-speed-cewit/static/js/main.a788089e.chunk.js.map",
     "runtime-main.js": "/reaction-speed-cewit/static/js/runtime-main.527f674e.js",
     "runtime-main.js.map": "/reaction-speed-cewit/static/js/runtime-main.527f674e.js.map",
-    "static/js/2.b81d9d60.chunk.js": "/reaction-speed-cewit/static/js/2.b81d9d60.chunk.js",
-    "static/js/2.b81d9d60.chunk.js.map": "/reaction-speed-cewit/static/js/2.b81d9d60.chunk.js.map",
+    "static/js/2.53d17908.chunk.js": "/reaction-speed-cewit/static/js/2.53d17908.chunk.js",
+    "static/js/2.53d17908.chunk.js.map": "/reaction-speed-cewit/static/js/2.53d17908.chunk.js.map",
     "index.html": "/reaction-speed-cewit/index.html",
-    "precache-manifest.3fc833ac55b99c869d39d656a4028d1c.js": "/reaction-speed-cewit/precache-manifest.3fc833ac55b99c869d39d656a4028d1c.js",
+    "precache-manifest.30b8fca68cdf41fc1c6c5b6e5c5ff423.js": "/reaction-speed-cewit/precache-manifest.30b8fca68cdf41fc1c6c5b6e5c5ff423.js",
     "service-worker.js": "/reaction-speed-cewit/service-worker.js",
-    "static/js/2.b81d9d60.chunk.js.LICENSE.txt": "/reaction-speed-cewit/static/js/2.b81d9d60.chunk.js.LICENSE.txt"
+    "static/js/2.53d17908.chunk.js.LICENSE.txt": "/reaction-speed-cewit/static/js/2.53d17908.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.527f674e.js",
-    "static/js/2.b81d9d60.chunk.js",
-    "static/js/main.46a9f7f5.chunk.js"
+    "static/js/2.53d17908.chunk.js",
+    "static/js/main.a788089e.chunk.js"
   ]
 }
