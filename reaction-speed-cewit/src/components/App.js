@@ -12,27 +12,33 @@ import TestScreen from "./TestScreen";
 
 //const styles = {};
 
+
 export default function App(props) {
     const [user, setUser] = React.useState("");
-    console.log(window.location.search);
+    const vfp = React.useMemo(
+        () => new URLSearchParams(window.location.search).get("vfp"),
+        []
+    );
     React.useEffect(() => {
-        async function fetchUser() {
-            const data = await authUser(URL + POST_AUTH_USER_ROUTE, {
-                targetUrl: TARGET_URL
-            });
-            setUser(data);
+        if (!vfp) {
+            async function fetchUser() {
+                const data = await authUser(URL + POST_AUTH_USER_ROUTE, {
+                    targetUrl: TARGET_URL
+                });
+                setUser(data);
+            }
+            fetchUser();
         }
-        fetchUser();
     }, []);
 
     React.useEffect(() => {
         if (
             !window.location.search &&
             user &&
-            user.Status == 0 &&
+            user.Status === 0 &&
             user.Response.RedirectTargetUrl
         ) {
-            //if there is not a parameter in qs, user status is 0 and there is a redirect
+            //if there is not a parameter in querystring, user status is 0 and there is a redirect
 
             window.location.href = user.Response.RedirectTargetUrl;
         }
@@ -40,8 +46,10 @@ export default function App(props) {
 
     return (
         <div>
-            {!user || user.status !== 0 ? <div>waiting for data</div> : null}
+            {!user || user.Status !== 0 ? <div>waiting for data</div> : null}
             {/*<TestScreen user={user} />*/}
+            {user ? user.Status : null}
+            {vfp}
         </div>
     );
 }

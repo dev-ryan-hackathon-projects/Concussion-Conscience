@@ -4,7 +4,8 @@ export const PAYFONE_AUTH_URL = "";
 
 export const PORT = 8080;
 
-export const TARGET_URL = "https://www.google.com/";
+export const TARGET_URL =
+    "https://ryancallahan312.github.io/reaction-speed-cewit";
 
 export const POST_TEST_RESULTS_ROUTE = "";
 
