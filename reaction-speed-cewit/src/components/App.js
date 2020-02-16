@@ -12,11 +12,12 @@ import TestScreen from "./TestScreen";
 //const styles = {};
 
 export default function App(props) {
-    const [user, setUser] = React.useState("");
+    const [user, setUser] = React.useState(null);
     const vfp = React.useMemo(
         () => new URLSearchParams(window.location.search).get("vfp"),
         []
     );
+    const [payfoneId, setPayfoneId] = React.useState(null);
     React.useEffect(() => {
         if (!vfp) {
             async function fetchUser() {
@@ -31,7 +32,7 @@ export default function App(props) {
                 const data = await finishAuth(URL + POST_FINISH_AUTH_ROUTE, {
                     vfp: vfp
                 });
-                setUser(data);
+                setPayfoneId(data);
             }
             finishUserAuth();
         }
@@ -52,10 +53,15 @@ export default function App(props) {
 
     return (
         <div>
-            {!user || user.Status !== 0 ? <div>waiting for data</div> : null}
+            {!user || user.Status !== 0 ? (
+                <div>waiting for data</div>
+            ) : (
+                <p>got data</p>
+            )}
             {/*<TestScreen user={user} />*/}
-            {user ? user.Status : null}
-            {vfp}
+            {payfoneId ? payfoneId : "payphoneId"}
+            {user ? user.Status : "userStatus"}
+            {vfp ? vfp : "vfp"}
         </div>
     );
 }
