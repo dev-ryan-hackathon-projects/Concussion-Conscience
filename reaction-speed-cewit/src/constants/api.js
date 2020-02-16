@@ -11,4 +11,6 @@ export const POST_TEST_RESULTS_ROUTE = "";
 
 export const POST_AUTH_USER_ROUTE = "/api/v1/auth";
 
+export const POST_FINISH_AUTH_ROUTE = "/api/v1/confAuth";
+
 export const GET_CLIENT_DATA_ROUTE = "";

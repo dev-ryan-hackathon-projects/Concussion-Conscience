@@ -2,16 +2,14 @@ import React from "react";
 import { sendTestResults } from "../api/tests";
 import {
     URL,
-    PAYFONE_AUTH_URL,
-    PORT,
+    POST_FINISH_AUTH_ROUTE,
     POST_AUTH_USER_ROUTE,
     TARGET_URL
 } from "../constants/api";
-import { authUser } from "../api/auth";
+import { authUser, finishAuth } from "../api/auth";
 import TestScreen from "./TestScreen";
 
 //const styles = {};
-
 
 export default function App(props) {
     const [user, setUser] = React.useState("");
@@ -28,6 +26,14 @@ export default function App(props) {
                 setUser(data);
             }
             fetchUser();
+        } else {
+            async function finishUserAuth() {
+                const data = await finishAuth(URL + POST_FINISH_AUTH_ROUTE, {
+                    vfp: vfp
+                });
+                setUser(data);
+            }
+            finishUserAuth();
         }
     }, []);
 
