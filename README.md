@@ -8,8 +8,8 @@ It works by using PayFone's sim card based authentication api in order to garent
 
 A base line reaction time reading must be taken at an anual physical to be able to accurely measure recovery.
 
-#Tech Used
-Create-react-app
-Node
-Express
-MongoDB
+# Tech Used
+1. Create-react-app
+2. Node
+3. Express
+4. MongoDB
